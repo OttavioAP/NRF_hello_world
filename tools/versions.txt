@@ -1,5 +1,11 @@
-zephyr v3.6.0
-arm-none-eabi-gcc 12.x
-cmake >= 3.20
-ninja >= 1.10
-segger jlink >= 7.94
+# Host tools (apt)
+cmake >= 3.27.5
+ninja >= 1.10.1
+arm-none-eabi-gcc >= 10.3.1 
+python >= 3.13.0
+
+# Zephyr tools (pip)
+west == 1.5.0
+
+# Zephyr
+zephyr == 3.6.0

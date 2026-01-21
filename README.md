@@ -165,9 +165,7 @@ continue
 
 ---
 
-## Step 8 — VS Code (Optional)
-
-VS Code is optional and used only as a frontend.
+## Step 8 — VS Code Extensions
 
 Recommended extensions:
 
@@ -175,29 +173,12 @@ Recommended extensions:
 - Cortex-Debug
 - CMake Tools
 
-Launch:
-
-```bash
-code .
-```
-
-All build and debug functionality works without VS Code.
 
 ---
 
-## Step 9 — Versioning & Reproducibility Policy
 
-This repository versions everything:
 
-- Zephyr and modules via west.yml
-- Tool versions via tools/versions.txt
-- All setup and workflow steps via scripts
-
-No global state is assumed. The repository is self-contained and reproducible.
-
----
-
-## Step 10 — References
+## References
 
 - Zephyr documentation: https://docs.zephyrproject.org
 - Nordic nRF52840 Product Specification
