@@ -1,0 +1,5 @@
+zephyr v3.6.0
+arm-none-eabi-gcc 12.x
+cmake >= 3.20
+ninja >= 1.10
+segger jlink >= 7.94
