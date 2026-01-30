@@ -128,6 +128,27 @@ Build outputs:
 
 ---
 
+## Optional — VS Code IntelliSense (compile_commands.json)
+
+If you want IntelliSense features like “Go to Definition”, generate a
+`compile_commands.json` file and point VS Code at it.
+
+Generate it:
+
+```bash
+make build
+```
+
+Then set:
+
+```json
+{
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+}
+```
+
+---
+
 ## Makefile Shortcuts
 
 Common actions are available via `make`:

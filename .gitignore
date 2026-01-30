@@ -9,3 +9,6 @@
 
 # CMake user package registry (optional in repo)
 /.cmake/
+
+# VS Code workspace settings
+/.vscode/

@@ -30,7 +30,7 @@ setup-zephyr:
 	./scripts/setup_zephyr.sh
 
 build:
-	west build -b $(BOARD) $(APP_DIR) -d $(BUILD_DIR)
+	west build -b $(BOARD) $(APP_DIR) -d $(BUILD_DIR) -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 flash:
 	west flash -d $(BUILD_DIR) -r $(FLASH_RUNNER)
@@ -42,7 +42,7 @@ gdb:
 	arm-none-eabi-gdb $(BUILD_DIR)/zephyr/zephyr.elf
 
 menuconfig:
-	west build -b $(BOARD) $(APP_DIR) -d $(BUILD_DIR) -t menuconfig
+	west build -b $(BOARD) $(APP_DIR) -d $(BUILD_DIR) -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -t menuconfig
 
 clean:
 	rm -rf $(BUILD_DIR)
