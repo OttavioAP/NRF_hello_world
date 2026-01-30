@@ -14,27 +14,7 @@ The goal of this repo is to blink a single led on the nRF52840 DK using Zephyr R
 
 ---
 
-## Step 1 — Install nRF Util
-
-Download `nrfutil`, make it executable, and place it in a folder on your `PATH`. citeturn0search0
-
-Download page:
-
-```text
-https://www.nordicsemi.com/Products/Development-tools/nRF-Util
-```
-
-Example (Linux):
-
-```bash
-chmod +x nrfutil
-mkdir -p ~/.local/bin
-mv nrfutil ~/.local/bin/
-```
-
----
-
-## Step 2 — Install Host Tooling
+## Step 1 — Install Host Tooling
 
 ### Requirements
 
@@ -78,7 +58,7 @@ source .venv/bin/activate
 
 ---
 
-## Step 3 — Install Segger J-Link 
+## Step 2 — Install Segger J-Link 
 
 Install Segger J-Link manually from https://www.segger.com/downloads/jlink/"
 
@@ -101,32 +81,7 @@ Expected Location is usually /usr/bin/JLinkExe
 
 ---
 
-## Step 3b — Install Nordic nRF Util (recommended)
-
-This repo defaults to the `nrfutil` runner for flashing. Install nRF Util and
-the `device` command:
-
-```bash
-nrfutil install device
-```
-
-Verify:
-
-```bash
-which nrfutil
-nrfutil device --help
-```
-
-If you prefer Nordic's nRF Command Line Tools (`nrfjprog`), set the Makefile
-variable:
-
-```bash
-make flash FLASH_RUNNER=nrfjprog
-```
-
----
-
-## Step 4 — Initialize Zephyr Workspace
+## Step 3 — Initialize Zephyr Workspace
 
 Zephyr and all modules are fetched using `west`, with versions pinned in `west.yml`.
 
@@ -152,7 +107,7 @@ west zephyr-export
 
 ---
 
-## Step 5 — Build Firmware
+## Step 4 — Build Firmware
 
 Build using CMake + Ninja through Zephyr:
 
@@ -192,7 +147,7 @@ make build BOARD=nrf52840dk_nrf52840 BUILD_DIR=build APP_DIR=app
 
 ---
 
-## Step 6 — Flash Firmware
+## Step 5 — Flash Firmware
 
 Recommended (Zephyr runner):
 
@@ -208,7 +163,7 @@ JLinkExe -device nRF52840_xxAA -if SWD -speed 4000
 
 ---
 
-## Step 7 — Debugging with GDB
+## Step 6 — Debugging with GDB
 
 Start GDB server:
 
@@ -239,7 +194,7 @@ continue
 
 ---
 
-## Step 8 — VS Code Extensions
+## Step 7 — VS Code Extensions
 
 Recommended extensions:
 
