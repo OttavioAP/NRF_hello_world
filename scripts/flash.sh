@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-west flash
+set -e
+west flash -d build

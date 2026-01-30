@@ -2,7 +2,7 @@
 
 CMake + Ninja + Segger J-Link (CLI) + VS Code (optional)
 
-This repository provides a fully reproducible, command-line–driven development environment for the nRF52840 DK using Zephyr RTOS. All builds, flashing, and debugging are performed via the command line. No proprietary IDEs are required. Proprietary tools are used only when unavoidable and strictly via CLI.
+The goal of this repo is to blink a single led on the nRF52840 DK using Zephyr RTOS. All builds, flashing, and debugging are performed via the command line.  Proprietary tools are used only when unavoidable and strictly via CLI.
 
 ---
 
@@ -11,6 +11,26 @@ This repository provides a fully reproducible, command-line–driven development
 - Board: nRF52840 DK
 - MCU: nRF52840 (Cortex-M4F)
 - Debug interface: On-board Segger J-Link (SWD)
+
+---
+
+## Step 1 — Install nRF Util
+
+Download `nrfutil`, make it executable, and place it in a folder on your `PATH`. citeturn0search0
+
+Download page:
+
+```text
+https://www.nordicsemi.com/Products/Development-tools/nRF-Util
+```
+
+Example (Linux):
+
+```bash
+chmod +x nrfutil
+mkdir -p ~/.local/bin
+mv nrfutil ~/.local/bin/
+```
 
 ---
 
@@ -35,7 +55,11 @@ This installs:
 - cmake
 - ninja
 - arm-none-eabi-gcc
-- west (Zephyr meta-tool)
+- device-tree-compiler (dtc)
+- a local Python virtualenv at `.venv` with:
+  - west (Zephyr meta-tool)
+  - pyelftools
+  - intelhex
 
 Verify installation:
 
@@ -44,6 +68,12 @@ arm-none-eabi-gcc --version
 cmake --version
 ninja --version
 west --version
+```
+
+Activate the virtualenv when working in this repo:
+
+```bash
+source .venv/bin/activate
 ```
 
 ---
@@ -68,6 +98,31 @@ JLinkExe --version
 Expected Location is usually /usr/bin/JLinkExe
 
 > On Linux, USB access may require udev rules. 
+
+---
+
+## Step 3b — Install Nordic nRF Util (recommended)
+
+This repo defaults to the `nrfutil` runner for flashing. Install nRF Util and
+the `device` command:
+
+```bash
+nrfutil install device
+```
+
+Verify:
+
+```bash
+which nrfutil
+nrfutil device --help
+```
+
+If you prefer Nordic's nRF Command Line Tools (`nrfjprog`), set the Makefile
+variable:
+
+```bash
+make flash FLASH_RUNNER=nrfjprog
+```
 
 ---
 
@@ -115,6 +170,25 @@ Build outputs:
 
 - `build/zephyr/zephyr.elf`
 - `build/zephyr/zephyr.hex`
+
+---
+
+## Makefile Shortcuts
+
+Common actions are available via `make`:
+
+```bash
+make build
+make flash
+make debug
+make gdb
+```
+
+You can override defaults if needed:
+
+```bash
+make build BOARD=nrf52840dk_nrf52840 BUILD_DIR=build APP_DIR=app
+```
 
 ---
 
@@ -172,6 +246,8 @@ Recommended extensions:
 - C/C++
 - Cortex-Debug
 - CMake Tools
+- Zephyr
+- NRF Connect
 
 
 ---

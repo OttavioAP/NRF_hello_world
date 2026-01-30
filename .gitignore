@@ -1,0 +1,11 @@
+# Zephyr / CMake build artifacts
+/build/
+
+# Python virtualenv
+/.venv/
+
+# West workspace metadata (topdir may be outside repo)
+/.west/
+
+# CMake user package registry (optional in repo)
+/.cmake/

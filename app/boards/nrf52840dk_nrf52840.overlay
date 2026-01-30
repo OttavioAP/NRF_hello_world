@@ -1,0 +1,4 @@
+/*
+ * Board overlay placeholder.
+ * The nRF52840 DK already defines led0/led1 aliases.
+ */
